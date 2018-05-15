@@ -308,6 +308,7 @@ const response = (opts, handler, next) => {
   }
 
   handler.response.body = pagination[options.pagination](handler)
+  handler.response.body = JSON.stringify(handler.response.body)
   return next()
 }
 
