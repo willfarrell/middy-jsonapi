@@ -272,15 +272,17 @@ const response = (opts, handler, next) => {
     handler.response.headers
   )
 
+  handler.response.body = Object.assign({}, response, handler.response.body)
+
   // add in meta
   if (response.meta) {
     handler.response.body.meta = Object.assign(
       {},
       response.meta,
-      (handler.response.body && handler.response.body.meta) || {}
+      handler.response.body.meta || {}
     )
   }
-  handler.response.body = Object.assign({}, response, handler.response.body)
+
   // catch any errors
   if (handler.error) {
     if (typeof options.logger === 'function') {
