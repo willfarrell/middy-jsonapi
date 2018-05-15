@@ -89,9 +89,6 @@ const jsonschemaErrors = handler => {
 }
 
 const unhandledError = handler => {
-  if (!(handler.error instanceof Error)) return {}
-  console.error(handler.context.awsRequestId, handler.error)
-
   handler.response.statusCode = 500
   handler.response.body = Object.assign({}, handler.response.body, {
     errors: [
@@ -102,6 +99,7 @@ const unhandledError = handler => {
       }
     ]
   })
+  return handler.response
 }
 
 const linkUrl = handler => {
@@ -294,9 +292,9 @@ const response = (opts, handler, next) => {
     handler.response = Object.assign(
       {},
       handler.response,
+      unhandledError(handler),
       httpError(handler),
-      jsonschemaErrors(handler),
-      unhandledError(handler)
+      jsonschemaErrors(handler)
     )
 
     return next()
