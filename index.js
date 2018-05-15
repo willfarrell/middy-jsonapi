@@ -262,7 +262,11 @@ const response = (opts, handler, next) => {
   const options = Object.assign({}, defaults, opts)
   const response = options.response
 
-  handler.response = handler.response || {}
+  handler.response = handler.response || {
+    body: {},
+    headers: {}
+  }
+
   handler.response.headers = Object.assign(
     {},
     {
@@ -279,7 +283,7 @@ const response = (opts, handler, next) => {
     handler.response.body.meta = Object.assign(
       {},
       response.meta,
-      handler.response.body.meta || {}
+      handler.response.body.meta
     )
   }
 
