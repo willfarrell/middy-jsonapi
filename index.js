@@ -273,13 +273,13 @@ const response = (opts, handler, next) => {
   )
 
   // add in meta
-  if (response.meta || handler.response.body.meta) {
+  if (response.meta) {
     handler.response.body.meta = Object.assign(
       {},
       response.meta,
-      handler.response.body.meta || {}
+      (handler.response.body && handler.response.body.meta) || {}
     )
-  } // Ensure meta is preserved, assign isn't deep
+  }
   handler.response.body = Object.assign({}, response, handler.response.body)
   // catch any errors
   if (handler.error) {
