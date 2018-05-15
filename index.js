@@ -41,7 +41,6 @@ const request = (handler, next) => {
       })
 
     handler.event.queryStringParameters = params
-    console.log(params)
   }
 
   return next()
