@@ -112,4 +112,6 @@ const jsonapiDeserialise = body => {
 This project is licensed under the MIT License - see the LICENSE file for details
 
 ## TODO
+- deserilize middleware
+- json schema definitions
 - Add in jsonapi ~= for httpPartialResponse
