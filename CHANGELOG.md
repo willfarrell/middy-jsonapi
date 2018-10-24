@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/willfarrell/middy-jsonapi/compare/v0.2.1...v0.2.2) (2018-10-24)
+
+
+### Bug Fixes
+
+* add split on spec keywords ([7e10142](https://github.com/willfarrell/middy-jsonapi/commit/7e10142))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/willfarrell/middy-jsonapi/compare/v0.1.5...v0.2.1) (2018-10-24)
 
