@@ -37,7 +37,7 @@ const request = (handler, next) => {
     Object.keys(handler.event.queryStringParameters)
       .filter(key => !disallowed.includes(key.split('[')[0]))
       .forEach(key => {
-        params[key] = handler.event.queryStringParameters[key].split(',')
+        params[key] = handler.event.queryStringParameters[key]
       })
 
     handler.event.queryStringParameters = params
