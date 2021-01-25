@@ -24,7 +24,7 @@ const querySerialize = function (obj) {
 // Includes middy/middleware/httpErrorHandler handling
 // Doesn't included filter parsing
 
-const request = (handler, next) => {
+const request = (handler) => {
   // parse
   if (handler.event.queryStringParameters) {
     handler.event.queryStringParametersRaw = handler.event.queryStringParameters // Used for `links` in response
@@ -43,7 +43,7 @@ const request = (handler, next) => {
     handler.event.queryStringParameters = params
   }
 
-  return next()
+  return
 }
 
 const httpError = handler => {
@@ -255,7 +255,7 @@ const pagination = {
   'cursor-based': cursorBasedPagination
 }
 
-const response = (opts, handler, next) => {
+const response = (opts, handler) => {
   const options = Object.assign({}, defaults, opts)
   const response = options.response
 
@@ -297,7 +297,7 @@ const response = (opts, handler, next) => {
       jsonschemaErrors(handler)
     )
 
-    return next()
+    return
   }
 
   // catch any stringified bodies
@@ -307,7 +307,7 @@ const response = (opts, handler, next) => {
 
   handler.response.body = pagination[options.pagination](handler)
   handler.response.body = JSON.stringify(handler.response.body)
-  return next()
+  return
 }
 
 module.exports = opts => ({
