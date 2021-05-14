@@ -80,7 +80,7 @@ const jsonschemaErrors = handler => {
       detail: error.message,
       source: {
         pointer: error.schemaPath.substr(1),
-        parameter: error.dataPath.substr(1)
+        parameter: error.dataPath == undefined ? error.instancePath.substr(1) : error.dataPath.substr(1)
       },
       meta: error.params
     }))
