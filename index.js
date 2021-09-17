@@ -1,5 +1,4 @@
 const { URL, URLSearchParams } = require('url')
-const createError = require('http-errors')
 
 const JsonApiQueryParserClass = require('jsonapi-query-parser')
 const jsonapiQueryParser = new JsonApiQueryParserClass()
@@ -48,7 +47,7 @@ const request = (handler) => {
 
 const httpError = handler => {
   if (
-    !(handler.error instanceof createError.HttpError) ||
+    !handler.error.expose ||
     Array.isArray(handler.error.details)
   ) {
     return {}
@@ -69,7 +68,7 @@ const httpError = handler => {
 
 const jsonschemaErrors = handler => {
   if (
-    !(handler.error instanceof createError.BadRequest) ||
+    !handler.error.expose ||
     !Array.isArray(handler.error.details)
   ) {
     return {}
